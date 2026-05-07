@@ -1,0 +1,37 @@
+{% extends "master/base.html" %}
+
+{% block c %}
+
+<h1>Calorie List</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">SL</th>
+      <th scope="col">Item Name</th>
+      <th scope="col">Consumed Calorie</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for data in consumed_data %}
+        <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{data.food}}</td>
+      <td>{{data.consume_calory}}</td>
+      <td>
+        <a href="{% url 'edit_calorie' data.id %}">Edit</a>
+        <a href="{% url 'delete_calorie' data.id %}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+        
+    
+
+  </tbody>
+</table>
+
+
+<a href="{% url 'add_calorie' %}" class="btn btn-primary">Add Caloire </a>
+{% endblock c %}

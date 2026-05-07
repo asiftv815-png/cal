@@ -1,0 +1,10 @@
+{% extends "master/base.html" %}
+
+{% block body %}
+{% include 'master/message.html' %}
+<h1>Profile Info</h1>
+
+<p>Name: {{request.username.user_info.name}}</p>
+<p>BMR: {{request.username.user_info.bmr|floatformat:2}} kcal</p>
+<a href="{% url 'update_page' %}" class="btn btn-primary">Update</a>
+{% endblock body %}
