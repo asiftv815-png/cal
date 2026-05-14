@@ -1,0 +1,28 @@
+{% extends 'master/base.html' %}
+
+{% block c %}
+{% include 'master/message.html' %}
+
+<div class="glass-card p-5 text-center">
+
+    <h1 class="page-title">Profile Info</h1>
+
+    <div class="mb-4">
+        <h4 class="text-info">Name</h4>
+        <p class="fs-4">{{request.user.user_info.name}}</p>
+    </div>
+
+    <div class="mb-4">
+        <h4 class="text-success">BMR</h4>
+        <p class="fs-3 fw-bold">
+            {{request.user.user_info.bmr}} kcal
+        </p>
+    </div>
+
+    <a href="{% url 'update_profile' %}" class="btn btn-primary">
+        Update Profile
+    </a>
+
+</div>
+
+{% endblock c %}

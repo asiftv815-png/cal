@@ -1,1 +1,10 @@
+<<<<<<< HEAD
 env/
+=======
+ 
+env/
+__pycache__/
+*.pyc
+db.sqlite3
+*.sqlite3
+>>>>>>> 9c9c0fe (initial commit)

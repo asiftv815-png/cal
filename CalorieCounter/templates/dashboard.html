@@ -1,0 +1,91 @@
+{% extends 'master/base.html' %}
+{% block c %}
+
+{% include 'master/message.html' %}
+
+<h1 class="page-title">Daily Calory Dashboard</h1>
+
+<div class="row g-4 mb-4">
+
+    <div class="col-md-4">
+        <div class="glass-card p-4 text-center h-100">
+            <h5 class="text-info">Consumed Calories</h5>
+            <h2>{{consumed_calories}} kcal</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="glass-card p-4 text-center h-100">
+            <h5 class="text-success">Required Calories</h5>
+            <h2>{{required_calories}} kcal</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="glass-card p-4 text-center h-100">
+            <h5 class="text-warning">Less / More</h5>
+            <h2>{{less_more}} kcal</h2>
+        </div>
+    </div>
+
+</div>
+
+<div class="glass-card p-4 mb-4">
+    <h4>
+        Suggestion :
+        <span class="text-info">{{suggestion}}</span>
+    </h4>
+</div>
+
+<div class="glass-card p-4">
+
+    <h3 class="mb-4">
+        Today Consumed Calories : {{total_count}}
+    </h3>
+
+    <table class="table table-hover align-middle">
+
+        <thead>
+            <tr>
+                <th>Sl</th>
+                <th>Item Name</th>
+                <th>Consumed Calories</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for data in today_consumed_data %}
+
+            <tr>
+                <td>{{forloop.counter}}</td>
+
+                <td class="fw-bold">
+                    {{data.item_name}}
+                </td>
+
+                <td>
+                    {{data.calorie}} kcal
+                </td>
+
+                <td>
+                    <a href="{% url 'update_calory' data.id %}" class="btn btn-sm btn-warning">
+                        Edit
+                    </a>
+
+                    <a href="{% url 'delete_calory' data.id %}" class="btn btn-sm btn-danger">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock c %}

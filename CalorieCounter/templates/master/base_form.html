@@ -1,0 +1,38 @@
+{% extends 'master/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block c %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-7">
+
+        <div class="glass-card p-5">
+
+            <h1 class="page-title text-center">
+                {{form_title}}
+            </h1>
+
+            {% include 'master/message.html' %}
+
+            <form method='POST' enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                {{form_data | crispy}}
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary px-5">
+                        {{form_btn}}
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock c %}
